@@ -1,15 +1,23 @@
+import { Routes, Route } from 'react-router-dom'
+
 import Header from './Header'
 import Main from './Main'
-import FNB from './FNB'
+import Favorite from './Favorite'
+import FNB from 'routes/_shared/FNB'
 
 import styles from './routes.module.scss'
 
 const App = () => {
   return (
     <div className={styles.appWrapper}>
-      routes
       <Header />
-      <Main />
+      <div className={styles.app}>
+        <Routes>
+          <Route path='/' element={<Main />} />
+          <Route path='favorite' element={<Favorite />} />
+          <Route path='*' element={<div>404 Not Found</div>} />
+        </Routes>
+      </div>
       <FNB />
     </div>
   )
