@@ -3,6 +3,12 @@
 .mainContainer {
   display: flex;
   height: 100%;
-  padding-top: 140px;
+  padding-top: 120px;
   padding-bottom: 56px;
+
+  .cardWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

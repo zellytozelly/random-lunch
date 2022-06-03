@@ -1,4 +1,4 @@
-import { FoodIcon1, HeartIcon } from 'assets'
+import { FoodIcon1, HeartIcon } from 'assets/svgs'
 import { NavLink, useParams } from 'react-router-dom'
 import cx from 'classnames'
 import styles from './fnb.module.scss'
