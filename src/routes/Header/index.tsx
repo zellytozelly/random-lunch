@@ -11,7 +11,11 @@ const Header = () => {
         <Search />
       </div>
       <div className={styles.buttonWrapper}>
-        <Button />
+        <Button buttonName='양식' isActive />
+        <Button buttonName='한식' isActive={false} />
+        <Button buttonName='일식' isActive={false} />
+        <Button buttonName='중식' isActive={false} />
+        <Button buttonName='그외' isActive={false} />
       </div>
     </header>
   )
