@@ -10,6 +10,7 @@ const Button = ({ buttonName, isActive }: Props) => {
   if (!buttonName) return null
 
   return (
+    // onClick={}
     <button type='button' className={cx(styles.foodButton, { [styles.buttonActive]: isActive })}>
       {buttonName}
     </button>
