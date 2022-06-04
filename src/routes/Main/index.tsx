@@ -1,31 +1,45 @@
+import { useEffect, useMemo, useState } from 'react'
+
 import Card from 'routes/_shared/Card'
 
+import noImage from 'assets/images/noImage.png'
 import styles from './main.module.scss'
 
-const Main = () => {
+import { IFood } from 'types/foodData'
+
+import { getUnitNameData } from 'utils/foodDataUtil'
+
+/* 
+## 버튼을 선택함에 따라 달라지는 화면
+- 화면을 변경하려면 상태가 바뀌어야한다
+1. 버튼에 각각 다른 값을 가지고있다
+2. 값을 상태로 관리한다
+3. 상태가 변경되면 데이터 다시 가져오기
+4. 리액트는 형제 컴포넌트간에 상태 공유가 안된다 -> 부모 컴포넌트에 state
+*/
+
+const Main = (foodUnit: string) => {
+  const [unitNameData, setUnitNameData] = useState<IFood[]>([])
+  //    "foodUnit": "그외",   "그외" filter item.foodUnit === 'foodUnit'
+  useEffect(() => {
+    console.log(typeof foodUnit)
+    const result = getUnitNameData(foodUnit)
+    setUnitNameData(result)
+  }, [foodUnit])
+
   return (
     <section className={styles.mainContainer}>
       <div className={styles.cardWrapper}>
-        <Card foodImage='https://picsum.photos/200/100' foodName='된장찌개' restaurantName='최고집 청국장' />
-        <Card foodImage='https://picsum.photos/500/300' foodName='김치찌개' restaurantName='김치장인' />
-        <Card foodImage='https://picsum.photos/400/600' foodName='순대국' restaurantName='제일 맛있는 순대국가게' />
-        <Card foodImage='https://picsum.photos/500/300' foodName='순두부찌개' restaurantName='집밥' />
-        <Card foodImage='https://picsum.photos/200/100' foodName='된장찌개' restaurantName='최고집 청국장' />
-        <Card foodImage='https://picsum.photos/500/300' foodName='김치찌개' restaurantName='김치장인' />
-        <Card
-          foodImage='https://picsum.photos/400/600'
-          foodName='순대국'
-          restaurantName='제일 맛있는 순대국가게 짜라짜라짠짠짠 짜라짜라짠짠짠 짜라짜라짠짠짠 짜라짜라짠짠짠'
-        />
-        <Card foodImage='https://picsum.photos/500/300' foodName='순두부찌개맛있는메뉴' restaurantName='집밥' />
-        <Card foodImage='https://picsum.photos/200/100' foodName='된장찌개' restaurantName='최고집 청국장' />
-        <Card foodImage='https://picsum.photos/500/300' foodName='김치찌개' restaurantName='김치장인' />
-        <Card foodImage='https://picsum.photos/400/600' foodName='순대국' restaurantName='제일 맛있는 순대국가게' />
-        <Card foodImage='https://picsum.photos/500/300' foodName='순두부찌개' restaurantName='집밥' />
-        <Card foodImage='https://picsum.photos/200/100' foodName='된장찌개' restaurantName='최고집 청국장' />
-        <Card foodImage='https://picsum.photos/500/300' foodName='김치찌개' restaurantName='김치장인' />
-        <Card foodImage='https://picsum.photos/400/600' foodName='순대국' restaurantName='제일 맛있는 순대국가게' />
-        <Card foodImage='https://picsum.photos/500/300' foodName='순두부찌개' restaurantName='집밥' />
+        {unitNameData.map((item) => {
+          return (
+            <Card
+              key={item.id}
+              foodImage={item.foodImageUrl}
+              foodName={item.menuName}
+              restaurantName={item.storeName}
+            />
+          )
+        })}
       </div>
     </section>
   )
