@@ -1,1 +1,19 @@
 @use '/src/styles/constants/colors';
+
+.foodButton {
+  width: 56px;
+  height: 28px;
+  color: colors.$TEXT59;
+  background-color: colors.$MAIN_GRAY;
+  border-radius: 20px;
+
+  & + & {
+    margin-left: 10px;
+  }
+
+  &:hover,
+  &:active,
+  &.buttonActive {
+    background-color: colors.$MAIN_YELLOW;
+  }
+}

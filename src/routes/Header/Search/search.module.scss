@@ -1,1 +1,29 @@
 @use '/src/styles/constants/colors';
+
+.searchForm {
+  position: relative;
+
+  .searchInput {
+    width: 320px;
+    height: 32px;
+    padding: 0 40px 0 20px;
+    color: colors.$TEXT39;
+    background-color: colors.$MAIN_LIGHTGRAY;
+    border-radius: 20px;
+
+    &::placeholder {
+      color: colors.$MAIN_DARKGRAY;
+    }
+  }
+
+  .searchButton {
+    svg {
+      position: absolute;
+      top: 7px;
+      right: 13px;
+      width: 18px;
+      height: 18px;
+      fill: colors.$MAIN_DARKGRAY;
+    }
+  }
+}
