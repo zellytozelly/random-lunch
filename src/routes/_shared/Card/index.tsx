@@ -36,8 +36,16 @@ const Card = ({ foodItem }: Props) => {
       <img src={foodItem.foodImageUrl} alt={foodItem.menuName} />
       <form className={cx(styles.cardTitle, { [styles.isActive]: isFavorite })}>
         <h3>{foodItem.menuName}</h3>
-        <HeartIcon />
-        <input type='checkbox' checked={isFavorite} onChange={handleHeartButtonClick} className={styles.heartInput} />
+        <label htmlFor={`heartCheckbox-${foodItem.id}`}>
+          <HeartIcon />
+        </label>
+        <input
+          id={`heartCheckbox-${foodItem.id}`}
+          type='checkbox'
+          checked={isFavorite}
+          onChange={handleHeartButtonClick}
+          className={styles.heartInput}
+        />
       </form>
       <p>{foodItem.storeName}</p>
     </section>

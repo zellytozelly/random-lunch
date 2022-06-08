@@ -11,7 +11,7 @@
   }
 
   .cardTitle {
-    position: relative;
+    // position: relative;
     display: flex;
     justify-content: space-between;
     margin: 12px 6px 0;
@@ -33,14 +33,15 @@
     }
 
     .heartInput {
-      position: absolute;
       right: 8px;
+      // position: absolute;
+      display: hidden;
       width: 18px;
       height: 18px;
     }
 
     svg {
-      position: absolute;
+      // position: absolute;
       right: 8px;
       width: 18px;
       height: 18px;
