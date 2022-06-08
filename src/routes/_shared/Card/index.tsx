@@ -1,26 +1,41 @@
-import styles from './card.module.scss'
-import noImage from 'assets/images/noImage.png'
+import { useState } from 'react'
+
+import { IFood } from 'types/foodData'
+import { removeFavoriteList, setFavoriteList } from 'states/food'
+
 import { HeartIcon } from 'assets/svgs'
+import styles from './card.module.scss'
+import { useAppDispatch } from 'hooks'
+import { cx } from 'styles'
 
 interface Props {
-  foodImage: string
-  foodName: string
-  restaurantName: string
+  foodItem: IFood
 }
 
-const Card = ({ foodImage, foodName, restaurantName }: Props) => {
-  if (!foodName) return null
+const Card = ({ foodItem }: Props) => {
+  const dispatch = useAppDispatch()
+  const [isFavorite, setIsFavorite] = useState(false)
 
+  const handleHeartButtonClick = () => {
+    setIsFavorite((prev) => !prev)
+    if (!isFavorite) {
+      dispatch(setFavoriteList(foodItem))
+    } else {
+      dispatch(removeFavoriteList(foodItem))
+    }
+  }
+
+  if (!foodItem) return null
   return (
     <section className={styles.cardContainer}>
-      <img src={foodImage} alt={foodName} />
+      <img src={foodItem.foodImageUrl} alt={foodItem.menuName} />
       <div className={styles.cardTitle}>
-        <h3>{foodName}</h3>
-        <button type='button'>
+        <h3>{foodItem.menuName}</h3>
+        <button type='button' onClick={handleHeartButtonClick} className={cx({ [styles.isActive]: isFavorite })}>
           <HeartIcon />
         </button>
       </div>
-      <p>{restaurantName}</p>
+      <p>{foodItem.storeName}</p>
     </section>
   )
 }

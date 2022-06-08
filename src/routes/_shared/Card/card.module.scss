@@ -30,11 +30,9 @@
       height: 18px;
       fill: colors.$MAIN_DARKGRAY;
 
-      &:hover {
-        fill: colors.$MAIN_PINK;
-      }
-
-      &:active {
+      &:hover,
+      &:active,
+      &.isActive {
         fill: colors.$MAIN_PINK;
       }
     }

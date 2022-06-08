@@ -1,34 +1,33 @@
 import { useEffect, useState } from 'react'
 
 import { useAppSelector } from 'hooks'
-import { getUnitName } from 'states/food'
-import { getUtilNameData } from 'utils/foodUtil'
+import { getSearchValue, getUnitName } from 'states/food'
+import { getSearchData, getUtilNameData } from 'utils/foodUtil'
 import Card from 'routes/_shared/Card'
 import { IFood } from 'types/foodData'
 
 import styles from './main.module.scss'
 
 const Main = () => {
-  const unitName = useAppSelector(getUnitName)
   const [updateData, setUpdateData] = useState<IFood[]>([])
+  const unitName = useAppSelector(getUnitName)
+  const searchValue = useAppSelector(getSearchValue)
 
   useEffect(() => {
-    const result = getUtilNameData(unitName)
-    setUpdateData(result)
+    const unitResult = getUtilNameData(unitName)
+    setUpdateData(unitResult)
   }, [unitName])
+
+  useEffect(() => {
+    const searchResult = getSearchData(searchValue)
+    setUpdateData(searchResult)
+  }, [searchValue])
 
   return (
     <section className={styles.mainContainer}>
       <div className={styles.cardWrapper}>
         {updateData.map((item) => {
-          return (
-            <Card
-              key={item.id}
-              foodImage={item.foodImageUrl}
-              foodName={item.menuName}
-              restaurantName={item.storeName}
-            />
-          )
+          return <Card key={item.id} foodItem={item} />
         })}
       </div>
     </section>

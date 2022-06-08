@@ -11,3 +11,9 @@ export const getUtilNameData = (param: string) => {
 }
 
 // 검색
+export const getSearchData = (param: string) => {
+  if (!param || param === '') return data
+  const searchData = data.filter((item) => item.menuName.includes(param))
+  if (!searchData) return []
+  return searchData
+}
