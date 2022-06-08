@@ -1,12 +1,12 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { cx } from 'styles'
 
+import { useAppDispatch, useAppSelector } from 'hooks'
 import { IFood } from 'types/foodData'
-import { removeFavoriteList, setFavoriteList } from 'states/food'
+import { getFavoriteList, removeFavoriteList, setFavoriteList } from 'states/food'
 
 import { HeartIcon } from 'assets/svgs'
 import styles from './card.module.scss'
-import { useAppDispatch } from 'hooks'
-import { cx } from 'styles'
 
 interface Props {
   foodItem: IFood
@@ -14,27 +14,31 @@ interface Props {
 
 const Card = ({ foodItem }: Props) => {
   const dispatch = useAppDispatch()
+  const favoriteList = useAppSelector(getFavoriteList)
   const [isFavorite, setIsFavorite] = useState(false)
 
   const handleHeartButtonClick = () => {
     setIsFavorite((prev) => !prev)
     if (!isFavorite) {
-      dispatch(setFavoriteList(foodItem))
+      dispatch(setFavoriteList(foodItem.id))
     } else {
-      dispatch(removeFavoriteList(foodItem))
+      dispatch(removeFavoriteList(foodItem.id))
     }
   }
+
+  useMemo(() => {
+    if (favoriteList.includes(foodItem.id)) setIsFavorite(true)
+  }, [favoriteList, foodItem.id])
 
   if (!foodItem) return null
   return (
     <section className={styles.cardContainer}>
       <img src={foodItem.foodImageUrl} alt={foodItem.menuName} />
-      <div className={styles.cardTitle}>
+      <form className={cx(styles.cardTitle, { [styles.isActive]: isFavorite })}>
         <h3>{foodItem.menuName}</h3>
-        <button type='button' onClick={handleHeartButtonClick} className={cx({ [styles.isActive]: isFavorite })}>
-          <HeartIcon />
-        </button>
-      </div>
+        <HeartIcon />
+        <input type='checkbox' checked={isFavorite} onChange={handleHeartButtonClick} className={styles.heartInput} />
+      </form>
       <p>{foodItem.storeName}</p>
     </section>
   )

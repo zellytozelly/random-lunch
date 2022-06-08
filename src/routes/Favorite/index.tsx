@@ -1,12 +1,12 @@
 import { useAppSelector } from 'hooks'
-import { useEffect } from 'react'
 import Card from 'routes/_shared/Card'
 import { getFavoriteList } from 'states/food'
+import { getFavoriteData } from 'utils/foodUtil'
 
 import styles from './favorite.module.scss'
 
 const Favorite = () => {
-  const favoriteList = useAppSelector(getFavoriteList)
+  const favoriteList = getFavoriteData(useAppSelector(getFavoriteList))
 
   return (
     <section className={styles.favoriteContainer}>

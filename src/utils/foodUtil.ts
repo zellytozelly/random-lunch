@@ -17,3 +17,11 @@ export const getSearchData = (param: string) => {
   if (!searchData) return []
   return searchData
 }
+
+// 좋아요
+export const getFavoriteData = (params: number[]) => {
+  if (!params) return []
+  const favoriteData = data.filter((item) => params.includes(item.id))
+  if (!favoriteData) return []
+  return favoriteData
+}

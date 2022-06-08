@@ -2,11 +2,10 @@ import store from 'store'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import type { RootState } from '.'
-import { IFood } from 'types/foodData'
 
 export interface FoodState {
   unitName: string
-  favoriteList: IFood[]
+  favoriteList: number[]
   searchValue: string
 }
 
@@ -24,18 +23,20 @@ const foodSlice = createSlice({
       const newUnitName = action.payload
       state.unitName = newUnitName
     },
-    setFavoriteList: (state: FoodState, action: PayloadAction<IFood>) => {
-      const newFavoriteItem = action.payload
-      state.favoriteList.push(newFavoriteItem)
-      // if (state.favoriteList.findIndex(({ id }) => id === newFavoriteItem.id)) return
+
+    setFavoriteList: (state: FoodState, action: PayloadAction<number>) => {
+      const newFavoriteId = action.payload
+      state.favoriteList.push(newFavoriteId)
       store.set('food.favorite', state.favoriteList)
     },
-    removeFavoriteList: (state: FoodState, action: PayloadAction<IFood>) => {
-      const removeFavoriteItem = action.payload
-      const removeFavoriteData = state.favoriteList.filter((item) => item !== removeFavoriteItem)
-      state.favoriteList = removeFavoriteData
+
+    removeFavoriteList: (state: FoodState, action: PayloadAction<number>) => {
+      const removeFavoriteId = action.payload
+      const removeFavoriteData = state.favoriteList.filter((item) => item !== removeFavoriteId)
+      state.favoriteList = [...removeFavoriteData]
       store.set('food.favorite', state.favoriteList)
     },
+
     setSearchValue: (state: FoodState, action: PayloadAction<string>) => {
       const newSearchValue = action.payload
       state.searchValue = newSearchValue
@@ -50,5 +51,5 @@ export default foodSlice.reducer
 // Selector =====================
 
 export const getUnitName = (state: RootState): string => state.food.unitName
-export const getFavoriteList = (state: RootState): IFood[] => state.food.favoriteList
+export const getFavoriteList = (state: RootState): number[] => state.food.favoriteList
 export const getSearchValue = (state: RootState): string => state.food.searchValue
