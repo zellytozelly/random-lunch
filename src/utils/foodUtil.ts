@@ -1,6 +1,5 @@
 import data from 'assets/json/seoul_food.json'
-
-// 랜덤
+import { IFood } from 'types/foodData'
 
 // 버튼
 export const getUtilNameData = (param: string) => {
@@ -24,4 +23,13 @@ export const getFavoriteData = (params: number[]) => {
   const favoriteData = data.filter((item) => params.includes(item.id))
   if (!favoriteData) return []
   return favoriteData
+}
+
+// 랜덤
+export const getRandomData = (array: IFood[]) => {
+  for (let i = array.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
+  }
+  return array
 }

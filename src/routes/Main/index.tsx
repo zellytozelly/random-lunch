@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { useAppSelector } from 'hooks'
 import { getSearchValue, getUnitName } from 'states/food'
-import { getSearchData, getUtilNameData } from 'utils/foodUtil'
+import { getRandomData, getSearchData, getUtilNameData } from 'utils/foodUtil'
 import Card from 'routes/_shared/Card'
 import { IFood } from 'types/foodData'
 
@@ -15,12 +15,14 @@ const Main = () => {
 
   useEffect(() => {
     const unitResult = getUtilNameData(unitName)
-    setUpdateData(unitResult)
+    const randomUnitResult = getRandomData(unitResult)
+    setUpdateData(randomUnitResult)
   }, [unitName])
 
   useEffect(() => {
     const searchResult = getSearchData(searchValue)
-    setUpdateData(searchResult)
+    const randomSearchResult = getRandomData(searchResult)
+    setUpdateData(randomSearchResult)
   }, [searchValue])
 
   return (
