@@ -11,9 +11,16 @@
   }
 
   .cardTitle {
+    position: relative;
     display: flex;
     justify-content: space-between;
     margin: 12px 6px 0;
+
+    &.isActive {
+      svg {
+        fill: colors.$MAIN_PINK;
+      }
+    }
 
     h3 {
       width: 100px;
@@ -25,18 +32,19 @@
       white-space: nowrap;
     }
 
+    .heartInput {
+      position: absolute;
+      right: 8px;
+      width: 18px;
+      height: 18px;
+    }
+
     svg {
+      position: absolute;
+      right: 8px;
       width: 18px;
       height: 18px;
       fill: colors.$MAIN_DARKGRAY;
-
-      &:hover {
-        fill: colors.$MAIN_PINK;
-      }
-
-      &:active {
-        fill: colors.$MAIN_PINK;
-      }
     }
   }
 
