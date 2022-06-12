@@ -35,8 +35,8 @@ const Header = () => {
         <button type='button' className={styles.titleButtonWrapper} value='전체' onClick={handleTitleClick}>
           <h1>🍴 랜덤! 오늘의 점심메뉴</h1>
         </button>
-        <button type='button' className={styles.titleDiceWrapper} onClick={handleRandomDiceClick}>
-          <Dice value={5} />
+        <button type='button' className={styles.titleDiceWrapper} value='전체' onClick={handleRandomDiceClick}>
+          {/* <Dice value={5} /> */}
         </button>
       </div>
 
