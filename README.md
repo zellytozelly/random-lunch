@@ -107,3 +107,7 @@ $ yarn start
 
 ### 즐겨찾기
 - [X] Redux로 local Storage에 즐겨찾기한 id 저장
+
+
+## 추후 도전과제
+- [ ] 카카오 맵 API를 사용한 지도 위치 표시
