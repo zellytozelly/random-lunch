@@ -9,10 +9,19 @@ header {
   background-color: colors.$WHITE;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 4%), 0 1px 2px rgba(0, 0, 0, 12%);
 
-  h1 {
-    padding: 25px 25px 18px;
-    font-size: 24px;
-    font-weight: bold;
+  .headerTitleWrapper {
+    display: flex;
+    justify-content: space-between;
+
+    .titleButtonWrapper {
+      padding: 25px 25px 18px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .titleDiceWrapper {
+      padding-right: 25px;
+    }
   }
 
   .searchWrapper {
