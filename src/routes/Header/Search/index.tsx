@@ -3,7 +3,7 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from 'hooks'
 import { setSearchValue } from 'states/food'
 
-import { SearchIcon } from 'assets/svgs'
+import { ThinSearchIcon } from 'assets/svgs'
 import styles from './search.module.scss'
 
 const Search = () => {
@@ -42,7 +42,7 @@ const Search = () => {
         placeholder={textArray[randomNumber]}
       />
       <button type='submit' className={styles.searchButton}>
-        <SearchIcon />
+        <ThinSearchIcon />
       </button>
     </form>
   )

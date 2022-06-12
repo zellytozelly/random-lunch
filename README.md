@@ -13,6 +13,10 @@
 ---
 ## 🔗 프로젝트 배포
 ### ⭐ 배포 UIL 🔗 https://random-lunch.netlify.app/
+<br/><br>
+- (Develop 브랜치에 추가 작업중)
+
+  https://develop-random-lunch.netlify.app/
 
 - figma : [Link](https://www.figma.com/file/lzQvxqmcmD7nS4go5pmobA/%EC%98%A4%EB%8A%98%EC%9D%98-%EB%A9%94%EB%89%B4?node-id=0%3A1)
 
@@ -67,11 +71,7 @@ $ yarn install
 $ yarn start
 ```
 
-## 🖼 실행 이미지
-
-## 🔧구현 방법
-
-## 일정
+## 🔧일정
 
 ### 기획/설계
 - [X] 기획
@@ -107,4 +107,7 @@ $ yarn start
 
 ### 즐겨찾기
 - [X] Redux로 local Storage에 즐겨찾기한 id 저장
-- 
+
+
+## 추후 도전과제
+- [ ] 카카오 맵 API를 사용한 지도 위치 표시
