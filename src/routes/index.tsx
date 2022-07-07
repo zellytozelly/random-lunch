@@ -8,7 +8,7 @@ import FNB from 'routes/_shared/FNB'
 
 const App = () => {
   return (
-    <div className={styles.appWrapper}>
+    <div>
       <Header />
       <div className={styles.app}>
         <Routes>
