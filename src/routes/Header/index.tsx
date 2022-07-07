@@ -1,4 +1,4 @@
-import { MouseEvent, useMemo, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styles from './header.module.scss'
 
@@ -7,7 +7,7 @@ import { setCategoryName } from 'states/food'
 
 import Button from './Button'
 import Search from './Search'
-import Dice from './Dice'
+// import Dice from './Dice'
 
 const Header = () => {
   const dispatch = useAppDispatch()
@@ -24,7 +24,7 @@ const Header = () => {
     dispatch(setCategoryName(currentCategoryName))
   }
 
-  useMemo(() => {
+  useEffect(() => {
     if (currentUrl.pathname === '/favorite') setIsFavorite(true)
     else setIsFavorite(false)
   }, [currentUrl.pathname])
@@ -36,7 +36,7 @@ const Header = () => {
           <h1>🍴 랜덤! 오늘의 점심메뉴</h1>
         </button>
         <button type='button' className={styles.titleDiceWrapper} value='전체' onClick={handleRandomDiceClick}>
-          <Dice value={5} />
+          {/* <Dice value={5} /> */}
         </button>
       </div>
 

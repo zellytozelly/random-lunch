@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { cx } from 'styles'
 import styles from './card.module.scss'
 
@@ -26,7 +26,7 @@ const Card = ({ foodItem }: Props) => {
     }
   }
 
-  useMemo(() => {
+  useEffect(() => {
     if (favoriteList.includes(foodItem.id)) setIsFavorite(true)
   }, [favoriteList, foodItem.id])
 
@@ -34,6 +34,7 @@ const Card = ({ foodItem }: Props) => {
   return (
     <section className={styles.cardContainer}>
       <img src={foodItem.foodImageUrl} alt={foodItem.menuName} />
+
       <form className={cx(styles.cardTitle, { [styles.isActive]: isFavorite })}>
         <h3>{foodItem.menuName}</h3>
         <label htmlFor={`heartCheckbox-${foodItem.id}`}>
@@ -47,6 +48,7 @@ const Card = ({ foodItem }: Props) => {
           className={styles.heartInput}
         />
       </form>
+
       <p>{foodItem.storeName}</p>
     </section>
   )
