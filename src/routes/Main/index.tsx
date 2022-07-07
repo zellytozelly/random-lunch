@@ -1,23 +1,23 @@
 import { useEffect, useState } from 'react'
+import styles from './main.module.scss'
 
 import { useAppSelector } from 'hooks'
-import { getSearchValue, getUnitName } from 'states/food'
+import { getSearchValue, getCategoryName } from 'states/food'
 import { getRandomData, getSearchData, getUtilNameData } from 'utils/foodUtil'
-import Card from 'routes/_shared/Card'
 import { IFood } from 'types/foodData'
 
-import styles from './main.module.scss'
+import Card from 'routes/_shared/Card'
 
 const Main = () => {
   const [updateData, setUpdateData] = useState<IFood[]>([])
-  const unitName = useAppSelector(getUnitName)
+  const categoryName = useAppSelector(getCategoryName)
   const searchValue = useAppSelector(getSearchValue)
 
   useEffect(() => {
-    const unitResult = getUtilNameData(unitName)
-    const randomUnitResult = getRandomData(unitResult)
-    setUpdateData(randomUnitResult)
-  }, [unitName])
+    const categoryResult = getUtilNameData(categoryName)
+    const randomCategoryResult = getRandomData(categoryResult)
+    setUpdateData(randomCategoryResult)
+  }, [categoryName])
 
   useEffect(() => {
     const searchResult = getSearchData(searchValue)

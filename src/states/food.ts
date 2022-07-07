@@ -4,13 +4,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '.'
 
 export interface FoodState {
-  unitName: string
+  categoryName: string
   favoriteList: number[]
   searchValue: string
 }
 
 const INITIAL_STATE: FoodState = {
-  unitName: '전체',
+  categoryName: '전체',
   favoriteList: store.get('food.favorite') || [],
   searchValue: '',
 }
@@ -19,9 +19,9 @@ const foodSlice = createSlice({
   name: 'food',
   initialState: INITIAL_STATE,
   reducers: {
-    setUnitName: (state: FoodState, action: PayloadAction<string>) => {
-      const newUnitName = action.payload
-      state.unitName = newUnitName
+    setCategoryName: (state: FoodState, action: PayloadAction<string>) => {
+      const newCategoryName = action.payload
+      state.categoryName = newCategoryName
     },
 
     setFavoriteList: (state: FoodState, action: PayloadAction<number>) => {
@@ -44,12 +44,12 @@ const foodSlice = createSlice({
   },
 })
 
-export const { setUnitName, setFavoriteList, removeFavoriteList, setSearchValue } = foodSlice.actions
+export const { setCategoryName, setFavoriteList, removeFavoriteList, setSearchValue } = foodSlice.actions
 
 export default foodSlice.reducer
 
 // Selector =====================
 
-export const getUnitName = (state: RootState): string => state.food.unitName
+export const getCategoryName = (state: RootState): string => state.food.categoryName
 export const getFavoriteList = (state: RootState): number[] => state.food.favoriteList
 export const getSearchValue = (state: RootState): string => state.food.searchValue

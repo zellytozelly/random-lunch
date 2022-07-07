@@ -1,8 +1,8 @@
-import { MouseEvent, useEffect, useMemo, useState } from 'react'
+import { MouseEvent, useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import { useAppDispatch } from 'hooks'
-import { setUnitName } from 'states/food'
+import { setCategoryName } from 'states/food'
 import Button from './Button'
 import Search from './Search'
 import Dice from './Dice'
@@ -15,13 +15,13 @@ const Header = () => {
   const [isFavorite, setIsFavorite] = useState(false)
 
   const handleTitleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    const currentUnitName = e.currentTarget.value
-    dispatch(setUnitName(currentUnitName))
+    const currentCategoryName = e.currentTarget.value
+    dispatch(setCategoryName(currentCategoryName))
   }
 
   const handleRandomDiceClick = (e: MouseEvent<HTMLButtonElement>) => {
-    const currentUnitName = e.currentTarget.value
-    dispatch(setUnitName(currentUnitName))
+    const currentCategoryName = e.currentTarget.value
+    dispatch(setCategoryName(currentCategoryName))
   }
 
   useMemo(() => {
@@ -36,7 +36,7 @@ const Header = () => {
           <h1>🍴 랜덤! 오늘의 점심메뉴</h1>
         </button>
         <button type='button' className={styles.titleDiceWrapper} value='전체' onClick={handleRandomDiceClick}>
-          {/* <Dice value={5} /> */}
+          <Dice value={5} />
         </button>
       </div>
 
