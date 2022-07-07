@@ -1,10 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
+import styles from './search.module.scss'
 
 import { useAppDispatch } from 'hooks'
 import { setSearchValue } from 'states/food'
 
 import { ThinSearchIcon } from 'assets/svgs'
-import styles from './search.module.scss'
 
 const Search = () => {
   const textArray = [

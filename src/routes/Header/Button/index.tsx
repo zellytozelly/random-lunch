@@ -1,10 +1,9 @@
 import { MouseEvent } from 'react'
 import cx from 'classnames'
+import styles from './button.module.scss'
 
 import { useAppDispatch, useAppSelector } from 'hooks'
 import { getCategoryName, setCategoryName } from 'states/food'
-
-import styles from './button.module.scss'
 
 interface Props {
   buttonName: string

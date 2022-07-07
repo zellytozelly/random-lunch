@@ -1,13 +1,13 @@
 import { MouseEvent, useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import styles from './header.module.scss'
 
 import { useAppDispatch } from 'hooks'
 import { setCategoryName } from 'states/food'
+
 import Button from './Button'
 import Search from './Search'
 import Dice from './Dice'
-
-import styles from './header.module.scss'
 
 const Header = () => {
   const dispatch = useAppDispatch()

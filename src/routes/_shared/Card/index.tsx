@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react'
 import { cx } from 'styles'
+import styles from './card.module.scss'
 
 import { useAppDispatch, useAppSelector } from 'hooks'
 import { IFood } from 'types/foodData'
 import { getFavoriteList, removeFavoriteList, setFavoriteList } from 'states/food'
 
 import { HeartIcon } from 'assets/svgs'
-import styles from './card.module.scss'
 
 interface Props {
   foodItem: IFood
