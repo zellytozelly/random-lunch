@@ -3,7 +3,7 @@ import styles from './main.module.scss'
 
 import { useAppSelector } from 'hooks'
 import { getSearchValue, getCategoryName } from 'states/food'
-import { getRandomData, getSearchData, getUtilNameData } from 'utils/foodUtil'
+import { getRandomData, getSearchData, getCategoryNameData } from 'utils/foodUtil'
 import { IFood } from 'types/foodData'
 
 import Card from 'routes/_shared/Card'
@@ -14,7 +14,7 @@ const Main = () => {
   const searchValue = useAppSelector(getSearchValue)
 
   useEffect(() => {
-    const categoryResult = getUtilNameData(categoryName)
+    const categoryResult = getCategoryNameData(categoryName)
     const randomCategoryResult = getRandomData(categoryResult)
     setUpdateData(randomCategoryResult)
   }, [categoryName])
