@@ -1,25 +1,19 @@
 import data from 'assets/json/seoul_food.json'
 import { IFood } from 'types/foodData'
 
-// 버튼
-export const getCategoryNameData = (categoryName: string) => {
-  if (categoryName === '전체') return data
-  const categoryNameData = data.filter((item) => item.foodUnit === categoryName)
-  return categoryNameData
-}
-
-// 검색
-export const getSearchData = (keyword: string) => {
-  if (!keyword || keyword === '') return data
-  const searchData = data.filter((item) => item.menuName.includes(keyword))
-  return searchData
-}
-
 // 좋아요
 export const getFavoriteData = (params: number[]) => {
   if (!params) return []
   const favoriteData = data.filter((item) => params.includes(item.id))
   return favoriteData
+}
+
+// 카테고리 + 검색
+export const getCategorySearchData = (category: string, keyword: string) => {
+  const keywordData = data.filter((item) => item.menuName.includes(keyword.trim()))
+  if (category === '전체') return keywordData
+  const resultData = keywordData.filter((item) => item.foodUnit === category)
+  return resultData
 }
 
 // 랜덤 (Fisher-Yates Shuffle)
