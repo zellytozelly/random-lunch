@@ -1,13 +1,13 @@
-import { MouseEvent, useEffect, useMemo, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import styles from './header.module.scss'
 
 import { useAppDispatch } from 'hooks'
-import { setUnitName } from 'states/food'
+import { setCategoryName } from 'states/food'
+
 import Button from './Button'
 import Search from './Search'
-import Dice from './Dice'
-
-import styles from './header.module.scss'
+// import Dice from './Dice'
 
 const Header = () => {
   const dispatch = useAppDispatch()
@@ -15,16 +15,16 @@ const Header = () => {
   const [isFavorite, setIsFavorite] = useState(false)
 
   const handleTitleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    const currentUnitName = e.currentTarget.value
-    dispatch(setUnitName(currentUnitName))
+    const currentCategoryName = e.currentTarget.value
+    dispatch(setCategoryName(currentCategoryName))
   }
 
   const handleRandomDiceClick = (e: MouseEvent<HTMLButtonElement>) => {
-    const currentUnitName = e.currentTarget.value
-    dispatch(setUnitName(currentUnitName))
+    const currentCategoryName = e.currentTarget.value
+    dispatch(setCategoryName(currentCategoryName))
   }
 
-  useMemo(() => {
+  useEffect(() => {
     if (currentUrl.pathname === '/favorite') setIsFavorite(true)
     else setIsFavorite(false)
   }, [currentUrl.pathname])

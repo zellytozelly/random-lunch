@@ -1,15 +1,14 @@
 import { Routes, Route } from 'react-router-dom'
+import styles from './routes.module.scss'
 
 import Header from './Header'
 import Main from './Main'
 import Favorite from './Favorite'
 import FNB from 'routes/_shared/FNB'
 
-import styles from './routes.module.scss'
-
 const App = () => {
   return (
-    <div className={styles.appWrapper}>
+    <div>
       <Header />
       <div className={styles.app}>
         <Routes>

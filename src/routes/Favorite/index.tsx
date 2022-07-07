@@ -1,9 +1,10 @@
+import styles from './favorite.module.scss'
+
 import { useAppSelector } from 'hooks'
-import Card from 'routes/_shared/Card'
 import { getFavoriteList } from 'states/food'
 import { getFavoriteData } from 'utils/foodUtil'
 
-import styles from './favorite.module.scss'
+import Card from 'routes/_shared/Card'
 
 const Favorite = () => {
   const favoriteList = getFavoriteData(useAppSelector(getFavoriteList))

@@ -1,10 +1,9 @@
 import { MouseEvent } from 'react'
 import cx from 'classnames'
+import styles from './button.module.scss'
 
 import { useAppDispatch, useAppSelector } from 'hooks'
-import { getUnitName, setUnitName } from 'states/food'
-
-import styles from './button.module.scss'
+import { getCategoryName, setCategoryName } from 'states/food'
 
 interface Props {
   buttonName: string
@@ -12,11 +11,11 @@ interface Props {
 
 const Button = ({ buttonName }: Props) => {
   const dispatch = useAppDispatch()
-  const unitName = useAppSelector(getUnitName)
+  const categoryName = useAppSelector(getCategoryName)
 
-  const handleUnitClick = (e: MouseEvent<HTMLButtonElement>) => {
-    const currentUnitName = e.currentTarget.value
-    dispatch(setUnitName(currentUnitName))
+  const handleCategoryClick = (e: MouseEvent<HTMLButtonElement>) => {
+    const currentCategoryName = e.currentTarget.value
+    dispatch(setCategoryName(currentCategoryName))
   }
 
   if (!buttonName) return null
@@ -25,8 +24,8 @@ const Button = ({ buttonName }: Props) => {
     <button
       type='button'
       value={buttonName}
-      onClick={handleUnitClick}
-      className={cx(styles.foodButton, { [styles.buttonActive]: buttonName === unitName })}
+      onClick={handleCategoryClick}
+      className={cx(styles.foodButton, { [styles.buttonActive]: buttonName === categoryName })}
     >
       {buttonName}
     </button>
